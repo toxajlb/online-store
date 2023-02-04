@@ -1,47 +1,62 @@
 import { makeAutoObservable } from "mobx";
 
 interface DeviceStoreTypes {
-    _types: unknown[];
-    _brands: unknown[];
-    _devices: unknown[];
-    _selectedType: object;
-    setTypes: (arg: unknown[]) => void;
-    setBrands: (arg: unknown[]) => void;
-    setDevices: (arg: unknown[]) => void;
-    setSelectedType: (arg: object) => void;
-    setSelectedBrand: (arg: object) => void;
+    _types: { 
+        id: number; 
+        name: string;
+    } [];
+
+    _brands: { 
+        id: number; 
+        name: string;
+    } [];
+
+    _devices: {
+        id: number,
+        title: string,
+        description: string
+    }[];
+
+    _selectedType:  {
+        id: number;
+        name: string;
+    }
+    _selectedBrand:  {
+        id: number;
+        name: string;
+    }
 }
 
 export default class DeviceStore implements DeviceStoreTypes {
-    _types: unknown[];
-    _brands: unknown[];
-    _devices: unknown[];
-    _selectedType: object;
-    _selectedBrand: object;
+    _types;
+    _brands;
+    _devices;
+    _selectedType;
+    _selectedBrand;
 
     constructor() {
-        this._types = []
-        this._brands = []
-        this._devices = []
-        this._selectedType = {}
-        this._selectedBrand = {}
+        this._types = [{id: 1, name: "Смартфоны"}, {id: 2, name: "Смартфоны"}]
+        this._brands = [{id: 1, name: "IPhone"}, {id: 2, name: "IPhone"}]
+        this._devices = [{id: 1, title: "IPhone", description: "14Pro"}, {id: 2, title: "IPhone", description: "12mini"}]
+        this._selectedType = {id: 1, name: "Смартфоны"}
+        this._selectedBrand = {id: 1, name: "Iphone"}
 
         makeAutoObservable(this);
     }   
 
-    setTypes(types: unknown[]) {
+    setTypes(types: { id: number; name: string; }[]) {
         this._types = types
     }
-    setBrands(brands: unknown[]) {
+    setBrands(brands) {
         this._brands = brands
     }
-    setDevices(devices: unknown[]) {
+    setDevices(devices) {
         this._devices = devices
     }
-    setSelectedType(type: object) {
+    setSelectedType(type) {
         this._selectedType = type
     }
-    setSelectedBrand(brand: object) {
+    setSelectedBrand(brand) {
         this._selectedBrand = brand
     }
 

@@ -3,8 +3,6 @@ import { makeAutoObservable } from "mobx";
 interface UserStoreTypes {
     _isAuth: boolean;
     _user: object;
-    setIsAuth: (arg: boolean) => void;
-    setuser: (arg: object) => void;
 }
 
 export default class UserStore implements UserStoreTypes {
@@ -17,10 +15,10 @@ export default class UserStore implements UserStoreTypes {
         makeAutoObservable(this);
     }   
     
-    setIsAuth(bool: boolean) {
+    setIsAuth(bool) {
         this._isAuth = bool;
     }
-    setuser(user: object) {
+    setUser(user) {
         this._user = user;
     }
 
