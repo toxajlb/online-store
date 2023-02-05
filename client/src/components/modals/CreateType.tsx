@@ -9,12 +9,12 @@ interface CreateTypeTypes {
 }
 
 const CreateType = ({ show, onHide }: CreateTypeTypes) => {
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState('');
 
     const addType = () => {
         createType({name: value}).then(data => {
-            setValue('')
-            onHide()
+            setValue('');
+            onHide();
         })
     }
 

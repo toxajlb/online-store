@@ -9,12 +9,12 @@ interface CreateBrandTypes {
 }
 
 const CreateBrand = ({ show, onHide }: CreateBrandTypes) => {
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState('');
 
     const addType = () => {
         createBrand({name: value}).then(data => {
-            setValue('')
-            onHide()
+            setValue('');
+            onHide();
         })
     }
 

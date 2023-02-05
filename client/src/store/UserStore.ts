@@ -10,7 +10,7 @@ export default class UserStore implements UserStoreTypes {
     _user;
 
     constructor() {
-        this._isAuth = true;
+        this._isAuth = false;
         this._user = {};
         makeAutoObservable(this);
     }   

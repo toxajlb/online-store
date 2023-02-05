@@ -1,9 +1,9 @@
 import { observer } from "mobx-react-lite";
 import { useContext, useState } from "react";
-import { Button, Card, Container, Form, Row } from "react-bootstrap";
+import { Button, Card, Container, Form } from "react-bootstrap";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "..";
-import { login, registration } from "../http/userApi";
+import { login, registration } from "../http/userAPI";
 import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from "../utils/consts";
 
 const Auth = observer(() => {
@@ -22,10 +22,10 @@ const Auth = observer(() => {
             } else {
                 data = await registration(email, password);
             }
-            user.setUser(user);
+            user.setUser(data);
             user.setIsAuth(true);
             navigate(SHOP_ROUTE);
-        } catch (e) {
+        } catch (e: unknown) {
             alert(e.response.data.message);
         }
 
@@ -52,7 +52,7 @@ const Auth = observer(() => {
                         onChange={e => setPassword(e.target.value)}
                         type="password"
                     />
-                    <Row className="d-flex justify-content-between mt-3 pl-3 pr-3">
+                    <Form className="d-flex justify-content-between mt-3 pl-3 pr-3">
                         {isLogin ?
                             <div>
                                 Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйтесь!</NavLink>
@@ -68,7 +68,7 @@ const Auth = observer(() => {
                         >
                             {isLogin ? 'Войти' : 'Регистрация'}
                         </Button>
-                    </Row>
+                    </Form>
 
                 </Form>
             </Card>

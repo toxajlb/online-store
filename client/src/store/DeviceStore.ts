@@ -2,62 +2,81 @@ import { makeAutoObservable } from "mobx";
 
 interface DeviceStoreTypes {
     _types: { 
-        id: number; 
-        name: string;
+        id: string 
+        name: string
     } [];
 
     _brands: { 
-        id: number; 
-        name: string;
+        id: string 
+        name: string
     } [];
 
     _devices: {
-        id: number,
-        title: string,
+        id: string
+        title: string
         description: string
+        name: string;
+        price: number;
+        rating: number;
+        img: string;
     }[];
 
     _selectedType:  {
-        id: number;
-        name: string;
-    }
+        id: string
+        name: string
+    };
     _selectedBrand:  {
-        id: number;
-        name: string;
-    }
+        id: string,
+        name: string
+    };
+    _page: number
+    _totalCount: number
+    _limit: number
 }
 
 export default class DeviceStore implements DeviceStoreTypes {
-    _types;
-    _brands;
-    _devices;
-    _selectedType;
-    _selectedBrand;
+    _types: { id: string; name: string}[];
+    _brands: { id: string; name: string}[];
+    _devices: { id: string; title: string; description: string; name: string; price: number; rating: number; img: string}[];
+    _selectedType:  {id: string; name: string};
+    _selectedBrand: {id: string; name: string};
+    _page;
+    _totalCount;
+    _limit;
 
     constructor() {
-        this._types = [{id: 1, name: "Смартфоны"}, {id: 2, name: "Смартфоны"}]
-        this._brands = [{id: 1, name: "IPhone"}, {id: 2, name: "IPhone"}]
-        this._devices = [{id: 1, title: "IPhone", description: "14Pro"}, {id: 2, title: "IPhone", description: "12mini"}]
-        this._selectedType = {id: 1, name: "Смартфоны"}
-        this._selectedBrand = {id: 1, name: "Iphone"}
+        this._types = []
+        this._brands = []
+        this._devices = []
+        this._selectedType = {id: '', name: ''}
+        this._selectedBrand = {id: '', name: ''}
+        this._page = 1
+        this._totalCount = 0
+        this._limit = 3
 
         makeAutoObservable(this);
     }   
 
-    setTypes(types: { id: number; name: string; }[]) {
+    setTypes(types: { id: string; name: string; }[]) {
         this._types = types
     }
-    setBrands(brands) {
+    setBrands(brands: { id: string; name: string; }[]) {
         this._brands = brands
     }
-    setDevices(devices) {
+    setDevices(devices: { id: string; title: string; description: string; name: string; price: number; rating: number; img: string}[]) {
         this._devices = devices
     }
-    setSelectedType(type) {
+    setSelectedType(type: { id: string; name: string; }) {
         this._selectedType = type
     }
-    setSelectedBrand(brand) {
+    setSelectedBrand(brand: { id: string; name: string; }) {
         this._selectedBrand = brand
+    }
+    setPage(page: number) {
+        this._page = page
+    }
+    setTotalCount(count: number) {
+        this._totalCount = count
     }
 
     get types() {
@@ -74,5 +93,14 @@ export default class DeviceStore implements DeviceStoreTypes {
     }
     get selectedBrand() {
         return this._selectedBrand
+    }
+    get totalCount() {
+        return this._totalCount
+    }
+    get page() {
+        return this._page
+    }
+    get limit() {
+        return this._limit
     }
 }
