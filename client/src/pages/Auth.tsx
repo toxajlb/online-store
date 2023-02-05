@@ -25,7 +25,7 @@ const Auth = observer(() => {
             user.setUser(data);
             user.setIsAuth(true);
             navigate(SHOP_ROUTE);
-        } catch (e: unknown) {
+        } catch (e) {
             alert(e.response.data.message);
         }
 

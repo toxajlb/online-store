@@ -18,6 +18,7 @@ const Shop = observer(() => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
+        // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
@@ -25,6 +26,7 @@ const Shop = observer(() => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
+        // eslint-disable-next-line
     }, [device.page, device.selectedType, device.selectedBrand,])
 
     return (

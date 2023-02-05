@@ -28,6 +28,7 @@ const CreateDevice = observer(({show, onHide}: CreateDeviceTypes) => {
     useEffect(() => {
         fetchTypes().then(data => device.setTypes(data));
         fetchBrands().then(data => device.setBrands(data));
+        // eslint-disable-next-line
     }, [])
 
     const addInfo = () => {

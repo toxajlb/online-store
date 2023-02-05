@@ -4,11 +4,32 @@ import bigStar from '../assets/bigStar.png';
 import { useParams } from 'react-router-dom';
 import { fetchOneDevice } from "../http/deviceAPI";
 
+interface DeviceType {
+    name: string;
+    price: number;
+    rating: number;
+    img: string;
+    info: {
+        id: string,
+        title: string,
+        description: string,
+    }[]
+}
+
+let arr: DeviceType = {
+    name: '',
+    price: 0,
+    rating: 0,
+    img: '',
+    info: []
+};
+
 const DevicePage = () => {
-    const [device, setDevice] = useState({info: []})
+    const [device, setDevice] = useState(arr)
     const {id} = useParams()
     useEffect(() => {
-        fetchOneDevice(id).then(data => setDevice(data))
+        fetchOneDevice(id).then(data => setDevice(data));
+        // eslint-disable-next-line
     }, [])
 
     return (

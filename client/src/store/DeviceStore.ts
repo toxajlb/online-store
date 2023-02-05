@@ -15,10 +15,10 @@ interface DeviceStoreTypes {
         id: string
         title: string
         description: string
-        name: string;
-        price: number;
-        rating: number;
-        img: string;
+        name: string
+        price: number
+        rating: number
+        img: string
     }[];
 
     _selectedType:  {
