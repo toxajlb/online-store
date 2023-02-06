@@ -10,7 +10,7 @@ interface DeviceType {
     rating: number;
     img: string;
     info: {
-        id: string,
+        id: number,
         title: string,
         description: string,
     }[]
@@ -28,7 +28,7 @@ const DevicePage = () => {
     const [device, setDevice] = useState(arr)
     const {id} = useParams()
     useEffect(() => {
-        fetchOneDevice(id).then(data => setDevice(data));
+        fetchOneDevice(id).then((data: DeviceType) => setDevice(data));
         // eslint-disable-next-line
     }, [])
 

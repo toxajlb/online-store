@@ -21,13 +21,13 @@ const DeviceItem = (props: {device: DeviceItemTypes}) => {
             <Card style={{width: 150, cursor: 'pointer'}} border={"light"}>
                 <Image width={150} height={150} src={process.env.REACT_APP_API_URL + props.device.img}/>
                 <div className="text-black-50 mt-1 d-flex justify-content-between align-items-center">
-                    <div>Samsung...</div>
+                    <div>{props.device.name}</div>
                     <div className="d-flex align-items-center">
                         <div>{props.device.rating}</div>
                         <Image width={18} height={18} src={star}/>
                     </div>
                 </div>
-                <div>{props.device.name}</div>
+                <div>{props.device.price} р.</div>
             </Card>
         </Col>
     );

@@ -21,7 +21,7 @@ let arr: InfoType [] = [];
 const CreateDevice = observer(({show, onHide}: CreateDeviceTypes) => {
     const {device} = useContext(Context);
     const [name, setName] = useState('');
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState<string | number>('');
     const [file, setFile] = useState<File | Blob | string>('');
     const [info, setInfo] = useState(arr);
 
