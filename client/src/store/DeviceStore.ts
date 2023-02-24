@@ -1,40 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-interface DeviceStoreTypes {
-    _types: { 
-        id: string 
-        name: string
-    } [];
-
-    _brands: { 
-        id: string 
-        name: string
-    } [];
-
-    _devices: {
-        id: string
-        title: string
-        description: string
-        name: string
-        price: number
-        rating: number
-        img: string
-    }[];
-
-    _selectedType:  {
-        id: string
-        name: string
-    };
-    _selectedBrand:  {
-        id: string,
-        name: string
-    };
-    _page: number
-    _totalCount: number
-    _limit: number
-}
-
-export default class DeviceStore implements DeviceStoreTypes {
+export default class DeviceStore {
     _types: { id: string; name: string}[];
     _brands: { id: string; name: string}[];
     _devices: { id: string; title: string; description: string; name: string; price: number; rating: number; img: string}[];
